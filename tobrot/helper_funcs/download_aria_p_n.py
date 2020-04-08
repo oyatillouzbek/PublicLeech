@@ -79,7 +79,7 @@ def add_magnet(aria_instance, magnetic_link, c_file_name):
             options=options
         )
     except Exception as e:
-        return False, "**FAILED** \n" + str(e) + " \nPlease do not send SLOW links. Read /help"
+        return False, "**Xatolik** \n" + str(e) + " \nIltimos, Qoʻllanmaydigon havolalarini yubormang. Batafsil /help"
     else:
         return True, "" + download.gid + ""
 
@@ -98,7 +98,7 @@ def add_url(aria_instance, text_url, c_file_name):
             options=options
         )
     except Exception as e:
-        return False, "**FAILED** \n" + str(e) + " \nPlease do not send SLOW links. Read /help"
+        return False, "**Xatolik** \n" + str(e) + " \nIltimos, Qoʻllanmaydigon havolalarini yubormang. Batafsil /help"
     else:
         return True, "" + download.gid + ""
 
@@ -137,7 +137,7 @@ async def call_apropriate_function(
                 None
             )
         else:
-            return False, "can't get metadata \n\n#stopped"
+            return False, "metadata olinmadi \n\n#toxtatildi"
     await asyncio.sleep(1)
     file = aria_instance.get_download(err_message)
     to_upload_file = file.name
@@ -173,11 +173,11 @@ async def call_apropriate_function(
         message_to_send += "</a>"
         message_to_send += "\n"
     if message_to_send != "":
-        mention_req_user = f"<a href='tg://user?id={user_id}'>Your Requested Files</a>\n\n"
+        mention_req_user = f"<a href='tg://user?id={user_id}'>Siz so'ragan fayl</a>\n\n"
         message_to_send = mention_req_user + message_to_send
         message_to_send = message_to_send + "\n\n" + "#uploads"
     else:
-        message_to_send = "<i>FAILED</i> to upload files. 😞😞"
+        message_to_send = "<i>Xatolik</i> faylni yuklab olib bolmadi. 😞😞"
     await sent_message_to_update_tg_p.reply_to_message.reply_text(
         text=message_to_send,
         quote=True,
@@ -205,12 +205,12 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 except:
                     pass
                 #
-                msg = f"\nDownloading File: `{downloading_dir_name}`"
-                msg += f"\nSpeed: {file.download_speed_string()} 🔽 / {file.upload_speed_string()} 🔼"
-                msg += f"\nProgress: {file.progress_string()}"
-                msg += f"\nTotal Size: {file.total_length_string()}"
-                # msg += f"\nStatus: {file.status}"
-                msg += f"\nETA: {file.eta_string()}"
+                msg = f"\nYuklanayotgan fayl: `{downloading_dir_name}`"
+                msg += f"\nTezlik: {file.download_speed_string()} 🔽 / {file.upload_speed_string()} 🔼"
+                msg += f"\nBajarildi: {file.progress_string()}"
+                msg += f"\nXajmi: {file.total_length_string()}"
+                # msg += f"\nHolat: {file.status}"
+                msg += f"\nVaqt: {file.eta_string()}"
                 msg += f"\n<code>/cancel {gid}</code>"
                 # LOGGER.info(msg)
                 if msg != previous_message:
@@ -223,20 +223,20 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
             await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
             await check_progress_for_dl(aria2, gid, event, previous_message)
         else:
-            await event.edit(f"File Downloaded Successfully: `{file.name}`")
+            await event.edit(f"Fayl muvaffaqiyatli yakunlandi: `{file.name}`")
             return True
     except Exception as e:
         LOGGER.info(str(e))
         if " not found" in str(e) or "'file'" in str(e):
-            await event.edit("Download Canceled :\n`{}`".format(file.name))
+            await event.edit("Yuklash bekor qilindi:\n`{}`".format(file.name))
             return False
         elif " depth exceeded" in str(e):
             file.remove(force=True)
-            await event.edit("Download Auto Canceled :\n`{}`\nYour Torrent/Link is Dead.".format(file.name))
+            await event.edit("Yuklash avtomatik bekor qilindi:\n`{}`\nSizning torrent/linkingizda xatolik mavjud.".format(file.name))
             return False
         else:
             LOGGER.info(str(e))
-            await event.edit("<u>error</u> :\n`{}` \n\n#error".format(str(e)))
+            await event.edit("<u>xatolik</u> :\n`{}` \n\n#error".format(str(e)))
             return
 # https://github.com/jaskaranSM/UniBorg/blob/6d35cf452bce1204613929d4da7530058785b6b1/stdplugins/aria.py#L136-L164
 
@@ -248,5 +248,5 @@ async def check_metadata(aria2, gid):
         # https://t.me/c/1213160642/496
         return None
     new_gid = file.followed_by_ids[0]
-    LOGGER.info("Changing GID " + gid + " to " + new_gid)
+    LOGGER.info("Guruhning " + gid + " Idsi " + new_gid + "ga ozgartrildi")
     return new_gid
