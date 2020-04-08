@@ -192,7 +192,7 @@ async def youtube_dl_call_back(bot, update):
         await bot.edit_message_text(
             chat_id=update.message.chat.id,
             message_id=update.message.message_id,
-            text=f"found {dir_contents} files"
+            text=f"{dir_contents} ta fayl topildi."
         )
         user_id = update.from_user.id
         #
