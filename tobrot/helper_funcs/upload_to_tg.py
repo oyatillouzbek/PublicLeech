@@ -53,7 +53,7 @@ async def upload_to_tg(
         # number_of_files = len(directory_contents)
         LOGGER.info(directory_contents)
         new_m_esg = await message.reply_text(
-            "Found {} files".format(len(directory_contents)),
+            "{} ta fayl yuborilmoqda...".format(len(directory_contents)),
             quote=True
             # reply_to_message_id=message.message_id
         )
