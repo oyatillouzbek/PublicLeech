@@ -22,7 +22,7 @@ from tobrot import (
 async def new_join_f(client, message):
     chat_type = message.chat.type
     if chat_type != "private":
-        await message.reply_text(f"Current CHAT ID: <code>{message.chat.id}</code>")
+        await message.reply_text(f"Kechirasiz men faqat @YTDownloaders guruhida ishlayman.Xayir")
         # leave chat
         await client.leave_chat(
             chat_id=message.chat.id,
@@ -33,12 +33,12 @@ async def new_join_f(client, message):
 
 
 async def help_message_f(client, message):
-    # await message.reply_text("no one gonna help you 🤣🤣🤣🤣", quote=True)
+    # await message.reply_text("Sizga yordam bera olmayman).", quote=True)
     channel_id = str(AUTH_CHANNEL)[4:]
     message_id = 99
     # display the /help message
     await message.reply_text(
-        f"please read the <a href='https://t.me/c/{channel_id}/{message_id}'>Pinned Message</a>",
+        f"Iltimos botdan foydalanish uchun <a href='https://t.me/YTDownloaders/425'>Shu saxifaga kiring.</a>",
         quote=True
     )
 
@@ -47,13 +47,13 @@ async def rename_message_f(client, message):
     inline_keyboard = []
     inline_keyboard.append([
         pyrogram.InlineKeyboardButton(
-            text="read this?",
-            url="https://t.me/keralagram/698909"
+            text="Bu yerga kiring.",
+            url="https://t.me/YTDownloaders/425"
         )
     ])
     reply_markup = pyrogram.InlineKeyboardMarkup(inline_keyboard)
     await message.reply_text(
-        "please use @renamebot",
+        "Botda qayta nomlash funksiyasi vaqtinchalik ishlamayapti.",
         quote=True,
         reply_markup=reply_markup
     )
