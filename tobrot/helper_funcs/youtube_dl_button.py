@@ -39,7 +39,7 @@ async def youtube_dl_call_back(bot, update):
     if current_user_id != current_touched_user_id:
         await bot.answer_callback_query(
             callback_query_id=update.id,
-            text="who are you? 🤪🤔🤔🤔",
+            text="Bu sizga tegishli emas.",
             show_alert=True,
             cache_time=0
         )
@@ -87,14 +87,14 @@ async def youtube_dl_call_back(bot, update):
     if "noyes.in" in youtube_dl_url or "tor.checker.in" in youtube_dl_url:
         await bot.edit_message_text(
             chat_id=update.message.chat.id,
-            text="😡😡 <i>please do not abuse this <u>FREE</u> service</i> 🌚",
+            text="😡😡 <i>iltimos, ushbu <u> BEPUL </u> xizmatdan suiiste'mol qilmang</i> 🌚",
             message_id=update.message.message_id
         )
         return
     if "drive.google.com" in youtube_dl_url and youtube_dl_format != "source":
         await bot.edit_message_text(
             chat_id=update.message.chat.id,
-            text="<i>please do not abuse this <u>FREE</u> service</i>",
+            text="<i>iltimos, ushbu <u> BEPUL </u> xizmatdan suiiste'mol qilmang</i>",
             message_id=update.message.message_id
         )
         return
@@ -222,11 +222,11 @@ async def youtube_dl_call_back(bot, update):
             message_to_send += "</a>"
             message_to_send += "\n"
         if message_to_send != "":
-            mention_req_user = f"<a href='tg://user?id={user_id}'>Your Requested Files</a>\n\n"
+            mention_req_user = f"<a href='tg://user?id={user_id}'>Siz soragan fayl.</a>\n\n"
             message_to_send = mention_req_user + message_to_send
             message_to_send = message_to_send + "\n\n" + "#uploads"
         else:
-            message_to_send = "<i>FAILED</i> to upload files. 😞😞"
+            message_to_send = "<i>Xatolik</i> faylni yuklab bolmadi. 😞😞"
         await update.message.reply_to_message.reply_text(
             text=message_to_send,
             quote=True,
