@@ -68,14 +68,14 @@ async def status_message_f(client, message):
             msg += "\n\n"
         LOGGER.info(msg)
         if msg == "":
-            msg = "🤷‍♂️ No Active, Queued or Paused TORRENTs"
+            msg = "🤷‍♂️ Bajarilgan amallar mavjud emas."
         await message.reply_text(msg, quote=True)
 
 
 async def cancel_message_f(client, message):
     if len(message.command) > 1:
         # /cancel command
-        i_m_s_e_g = await message.reply_text("checking..?", quote=True)
+        i_m_s_e_g = await message.reply_text("Tasdiqlanmoqda...", quote=True)
         aria_i_p = await aria_start()
         g_id = message.command[1].strip()
         LOGGER.info(g_id)
@@ -84,11 +84,11 @@ async def cancel_message_f(client, message):
             LOGGER.info(downloads)
             LOGGER.info(downloads.remove(force=True))
             await i_m_s_e_g.edit_text(
-                "Leech Cancelled"
+                "Mutloq bekor qilindi."
             )
         except Exception as e:
             await i_m_s_e_g.edit_text(
-                "<i>FAILED</i>\n\n" + str(e) + "\n#error"
+                "<i>Xatolik:</i>\n\n" + str(e) + "\n#error"
             )
     else:
         await message.delete()
@@ -113,14 +113,14 @@ async def exec_message_f(client, message):
         stdout, stderr = await process.communicate()
         e = stderr.decode()
         if not e:
-            e = "No Error"
+            e = "Xatolik yoq"
         o = stdout.decode()
         if not o:
-            o = "No Output"
+            o = "Natija yoq"
         else:
             _o = o.split("\n")
             o = "`\n".join(_o)
-        OUTPUT = f"**QUERY:**\n__Command:__\n`{cmd}` \n__PID:__\n`{process.pid}`\n\n**stderr:** \n`{e}`\n**Output:**\n{o}"
+        OUTPUT = f"**Sorov:**\n__Buyruq:__\n`{cmd}` \n__PID:__\n`{process.pid}`\n\n**stderr:** \n`{e}`\n**Natija:**\n{o}"
 
         if len(OUTPUT) > MAX_MESSAGE_LENGTH:
             with open("exec.text", "w+", encoding="utf8") as out_file:
@@ -140,7 +140,7 @@ async def exec_message_f(client, message):
 
 async def upload_document_f(client, message):
     imsegd = await message.reply_text(
-        "processing ..."
+        "Ishlanmoqda ..."
     )
     if await AdminCheck(client, message.chat.id, message.from_user.id):
         if " " in message.text:
