@@ -38,7 +38,7 @@ async def help_message_f(client, message):
     message_id = 99
     # display the /help message
     await message.reply_text(
-        f"Iltimos botdan foydalanish uchun <a href='https://t.me/YTDownloaders/425'>Shu saxifaga kiring.</a>",
+        f"Iltimos botdan foydalanish uchun <a href='https://t.me/YTDownloaders/7389'>Shu saxifaga kiring.</a>",
         quote=True
     )
 
