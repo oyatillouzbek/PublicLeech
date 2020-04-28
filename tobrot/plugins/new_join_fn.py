@@ -22,23 +22,13 @@ from tobrot import (
 async def new_join_f(client, message):
     chat_type = message.chat.type
     if chat_type != "private":
-        await message.reply_text(f"Kechirasiz men faqat @YTDownloaders guruhida ishlayman.Xayir")
-        # leave chat
-        await client.leave_chat(
-            chat_id=message.chat.id,
-            delete=True
-        )
-    # delete all other messages, except for AUTH_CHANNEL
-    await message.delete(revoke=True)
-
+        await message.reply_text(f"Assalomu alaykum.Men Youtubedan video yuklab beruvchi bot bolaman. Foydalanish uchun habar yozayotganingizda @vid Ummon deb yozing va jonatmay ozgina kuting.Ummonning youtubedagi kliplari chiqadi.Ustiga bosib osha xabarga javob tariqasida reply qilib /ytdl buyrugini yuboring.Uyogini oziz tushinib olasiz")
 
 async def help_message_f(client, message):
     # await message.reply_text("Sizga yordam bera olmayman).", quote=True)
-    channel_id = str(AUTH_CHANNEL)[4:]
-    message_id = 99
     # display the /help message
     await message.reply_text(
-        f"Iltimos botdan foydalanish uchun <a href='https://t.me/YTDownloaders/7389'>Shu saxifaga kiring.</a>",
+        f"Assalomu alaykum.Men Youtubedan video yuklab beruvchi bot bolaman. Foydalanish uchun habar yozayotganingizda @vid Ummon deb yozing va jonatmay ozgina kuting.Ummonning youtubedagi kliplari chiqadi.Ustiga bosib osha xabarga javob tariqasida reply qilib /ytdl buyrugini yuboring.Uyogini oziz tushinib olasiz",
         quote=True
     )
 
@@ -48,7 +38,7 @@ async def rename_message_f(client, message):
     inline_keyboard.append([
         pyrogram.InlineKeyboardButton(
             text="Bu yerga kiring.",
-            url="https://t.me/YTDownloaders/425"
+            url="https://t.me/YTDownloaders/7389"
         )
     ])
     reply_markup = pyrogram.InlineKeyboardMarkup(inline_keyboard)
