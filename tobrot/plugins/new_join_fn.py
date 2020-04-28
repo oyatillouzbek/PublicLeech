@@ -14,11 +14,6 @@ LOGGER = logging.getLogger(__name__)
 import pyrogram
 
 
-from tobrot import (
-    AUTH_CHANNEL
-)
-
-
 async def new_join_f(client, message):
     chat_type = message.chat.type
     if chat_type != "private":
