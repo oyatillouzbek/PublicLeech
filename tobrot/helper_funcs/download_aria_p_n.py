@@ -20,7 +20,6 @@ from tobrot.helper_funcs.create_compressed_archive import create_archive
 from tobrot import (
     ARIA_TWO_STARTED_PORT,
     MAX_TIME_TO_WAIT_FOR_TORRENTS_TO_START,
-    AUTH_CHANNEL,
     DOWNLOAD_LOCATION,
     EDIT_SLEEP_TIME_OUT
 )
@@ -163,17 +162,14 @@ async def call_apropriate_function(
     message_to_send = ""
     for key_f_res_se in final_response:
         local_file_name = key_f_res_se
-        message_id = final_response[key_f_res_se]
-        channel_id = str(AUTH_CHANNEL)[4:]
-        private_link = f"https://t.me/c/{channel_id}/{message_id}"
-        message_to_send += "👉 <a href='"
-        message_to_send += private_link
-        message_to_send += "'>"
+        private_link = f"muvoffaqiyatli yuklandi"
+        message_to_send += "."
         message_to_send += local_file_name
-        message_to_send += "</a>"
+        message_to_send += " nomli fayl "
+        message_to_send += private_link
         message_to_send += "\n"
     if message_to_send != "":
-        mention_req_user = f"<a href='tg://user?id={user_id}'>Siz so'ragan fayl</a>\n\n"
+        mention_req_user = f"<a href='tg://user?id={user_id}'>Siz so'ragan fayl</a>\n"
         message_to_send = mention_req_user + message_to_send
         message_to_send = message_to_send + "\n\n" + "#uploads"
     else:
