@@ -18,8 +18,7 @@ from tobrot import (
     DOWNLOAD_LOCATION,
     TG_BOT_TOKEN,
     APP_ID,
-    API_HASH,
-    AUTH_CHANNEL
+    API_HASH
 )
 
 from pyrogram import Client, Filters, MessageHandler, CallbackQueryHandler
@@ -54,25 +53,25 @@ if __name__ == "__main__" :
     #
     incoming_message_handler = MessageHandler(
         incoming_message_f,
-        filters=Filters.command(["leech"]) & Filters.chat(chats=AUTH_CHANNEL)
+        filters=Filters.command(["leech"])
     )
     app.add_handler(incoming_message_handler)
     #
     incoming_youtube_dl_handler = MessageHandler(
         incoming_youtube_dl_f,
-        filters=Filters.command(["ytdl"]) & Filters.chat(chats=AUTH_CHANNEL)
+        filters=Filters.command(["ytdl"])
     )
     app.add_handler(incoming_youtube_dl_handler)
     #
     status_message_handler = MessageHandler(
         status_message_f,
-        filters=Filters.command(["status"]) & Filters.chat(chats=AUTH_CHANNEL)
+        filters=Filters.command(["status"])
     )
     app.add_handler(status_message_handler)
     #
     cancel_message_handler = MessageHandler(
         cancel_message_f,
-        filters=Filters.command(["cancel"]) & Filters.chat(chats=AUTH_CHANNEL)
+        filters=Filters.command(["cancel"])
     )
     app.add_handler(cancel_message_handler)
     #
@@ -96,19 +95,17 @@ if __name__ == "__main__" :
 
     help_text_handler = MessageHandler(
         help_message_f,
-        filters=Filters.command(["help"]) & Filters.chat(chats=AUTH_CHANNEL)
+        filters=Filters.command(["help"])
     )
     app.add_handler(help_text_handler)
     #
     new_join_handler = MessageHandler(
-        new_join_f,
-        filters=~Filters.chat(chats=AUTH_CHANNEL)
+        new_join_f
     )
     app.add_handler(new_join_handler)
     #
     group_new_join_handler = MessageHandler(
-        help_message_f,
-        filters=Filters.chat(chats=AUTH_CHANNEL) & Filters.new_chat_members
+        help_message_f
     )
     app.add_handler(group_new_join_handler)
     #
@@ -119,13 +116,13 @@ if __name__ == "__main__" :
     #
     save_thumb_nail_handler = MessageHandler(
         save_thumb_nail,
-        filters=Filters.command(["savethumbnail"]) & Filters.chat(chats=AUTH_CHANNEL)
+        filters=Filters.command(["savethumbnail"])
     )
     app.add_handler(save_thumb_nail_handler)
     #
     clear_thumb_nail_handler = MessageHandler(
         clear_thumb_nail,
-        filters=Filters.command(["clearthumbnail"]) & Filters.chat(chats=AUTH_CHANNEL)
+        filters=Filters.command(["clearthumbnail"])
     )
     app.add_handler(clear_thumb_nail_handler)
     #
